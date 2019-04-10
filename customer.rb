@@ -1,11 +1,12 @@
 class Customer
 
-  attr_reader :name
+  attr_reader :name, :age, :drunkeness
 
-  def initialize(name, wallet)
+  def initialize(name, wallet, age)
     @name = name
     @wallet = wallet
-
+    @age = age
+    @drunkeness = 0
   end
 
   def wallet_value
@@ -13,8 +14,14 @@ class Customer
   end
 
   def buy_drink(drink, pub)
-    @wallet -= drink.price
-    pub.add_to_till(drink.price)
+    if (pub.is_old_enough(@age) && !pub.too_drunk_to_serve(@drunkeness))
+      @wallet -= drink.price
+      pub.add_to_till(drink.price)
+      @drunkeness += drink.alcohol_level
+    else
+      return "You're barred!!!"
+    end
+
   end
 
 

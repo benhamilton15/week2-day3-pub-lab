@@ -17,6 +17,13 @@ class Pub
     @till += price
   end
 
+  def is_old_enough(customer_age)
+    return customer_age >= 18
+  end
+
+  def too_drunk_to_serve(customer_drunkeness)
+    return 5 <= customer_drunkeness
+  end
 
   # def drink_list
   #   #return @drinks

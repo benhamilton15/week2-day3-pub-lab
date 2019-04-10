@@ -9,9 +9,9 @@ require_relative("../customer.rb")
 class PubTest < MiniTest::Test
 
   def setup
-    @customer1 = Customer.new("Alex", 50)
-    @drink1 = Drink.new("Beer", 2)
-    @drink2 = Drink.new("Gin", 3)
+    @customer1 = Customer.new("Alex", 50, 18)
+    @drink1 = Drink.new("Beer", 2, 1)
+    @drink2 = Drink.new("Gin", 3, 2)
     @drinks = [@drink1, @drink2]
     @pub = Pub.new("4042", @drinks)
   end
@@ -28,6 +28,14 @@ class PubTest < MiniTest::Test
     assert_equal(2, @pub.add_to_till(2))
   end
 
+
+  def test_customer_is_old_enough
+    assert(@pub.is_old_enough(@customer1.age))
+  end
+
+  def test_too_drunk_to_serve
+    refute(@pub.too_drunk_to_serve(@customer1.drunkeness))
+  end
   # def test_get_drink_list
   #   assert_equal("Beer", @pub.drink_list)
   # end
