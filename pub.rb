@@ -2,11 +2,12 @@ class Pub
 
   attr_reader :name
 
-  def initialize(name, drinks)
+  def initialize(name, drinks, food, stock)
     @name = name
     @drinks = drinks
     @till = 0
-
+    @food = food
+    @stock = stock
   end
 
   def till_contents

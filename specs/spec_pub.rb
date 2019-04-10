@@ -12,8 +12,18 @@ class PubTest < MiniTest::Test
     @customer1 = Customer.new("Alex", 50, 18)
     @drink1 = Drink.new("Beer", 2, 1)
     @drink2 = Drink.new("Gin", 3, 2)
-    @drinks = [@drink1, @drink2]
-    @pub = Pub.new("4042", @drinks)
+    @drink3 = Drink.new("Gin", 3, 2)
+    @drinks = [@drink1, @drink2, @drink3]
+    
+    @stock = {
+      @drink1 => 4,
+      @drink2 => 5,
+      @drink3 => 6
+    }
+
+    @food1 = Food.new("Peanuts", 1, 1)
+    @pub = Pub.new("4042", @drinks, @food1, @stock)
+
   end
 
   def test_pub_has_name
