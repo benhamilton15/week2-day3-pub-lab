@@ -8,6 +8,9 @@ class Customer
 
   end
 
+  def wallet_value
+    return @wallet
+  end
 
 
 end
