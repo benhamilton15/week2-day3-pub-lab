@@ -12,5 +12,10 @@ class Customer
     return @wallet
   end
 
+  def buy_drink(drink, pub)
+    @wallet -= drink.price
+    pub.add_to_till(drink.price)
+  end
+
 
 end
